@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import Button from "./component/Button";
+import Todos from "./component/Todos";
 
 function App() {
+  const [counter, setCounter] = useState(0);
+
+  const addCounter = () => {
+    // Always better to pass a function to setState hook
+    setCounter((prevCounter) => prevCounter + 1);
+  };
+
+  const minusCounter = () => {
+    setCounter((prevCounter) => prevCounter - 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>{counter}</div>
+      <Button onClick={addCounter} style={{ color: "red" }}>
+        Plus
+      </Button>
+      <Button onClick={minusCounter} style={{ color: "blue" }}>
+        Minus
+      </Button>
+      <Todos />
+    </>
   );
 }
 
