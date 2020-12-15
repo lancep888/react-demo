@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import Button from "./component/Button";
 import Todos from "./component/Todos";
+import TodoRedux from "./component/TodoRedux";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -24,7 +25,7 @@ function App() {
       <Button onClick={minusCounter} style={{ color: "blue" }}>
         Minus
       </Button>
-      <Todos />
+      <TodoRedux />
     </>
   );
 }
