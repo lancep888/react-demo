@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "./component/Button";
 import Todos from "./component/Todos";
 import TodoRedux from "./component/TodoRedux";
+import Album from "./component/Album";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -26,6 +27,8 @@ function App() {
         Minus
       </Button>
       <TodoRedux />
+      <br></br>
+      <Album />
     </>
   );
 }

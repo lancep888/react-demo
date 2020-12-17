@@ -6,7 +6,7 @@ import { addTodo, toggleTodo } from "../store/todoSlice";
 function TodoRedux() {
   const [todoText, setTodoText] = useState("");
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state);
+  const todos = useSelector((state) => state.todo);
 
   const handleTextChange = (e) => {
     setTodoText((prev) => (prev = e.target.value));
