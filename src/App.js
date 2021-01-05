@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "./component/Button";
 import Todos from "./component/Todos";
 import TodoRedux from "./component/TodoRedux";
+import Posts from "./component/Posts";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -18,14 +19,15 @@ function App() {
 
   return (
     <>
-      <div>{counter}</div>
+      {/* <div>{counter}</div>
       <Button onClick={addCounter} style={{ color: "red" }}>
         Plus
       </Button>
       <Button onClick={minusCounter} style={{ color: "blue" }}>
         Minus
-      </Button>
+      </Button> */}
       <TodoRedux />
+      {/* <Posts /> */}
     </>
   );
 }

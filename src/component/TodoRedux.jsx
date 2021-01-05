@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { addTodo, toggleTodo } from '../store/todo'
-import { addTodo, toggleTodo } from "../store/todoSlice";
+import { addTodo, toggleTodo, emptyAll } from "../store/todoSlice";
 
 function TodoRedux() {
   const [todoText, setTodoText] = useState("");
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state);
+  const todos = useSelector((state) => state.todos);
 
   const handleTextChange = (e) => {
     setTodoText((prev) => (prev = e.target.value));
@@ -23,6 +23,10 @@ function TodoRedux() {
     setTodoText((prev) => (prev = ""));
   };
 
+  const handleEmptyAll = () => {
+    dispatch(emptyAll());
+  };
+
   const handleToggle = (todo) => {
     // dispatch the toggleTodo action with a payload
     dispatch(toggleTodo(todo));
@@ -36,6 +40,7 @@ function TodoRedux() {
         value={todoText}
       ></input>
       <button onClick={handleAddTodo}>Add Todo</button>
+      <button onClick={handleEmptyAll}>Empty All</button>
       {todos.map((todo) => (
         <div
           key={todo.id}
