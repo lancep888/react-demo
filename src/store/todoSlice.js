@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-immer;
 
 const todoSlice = createSlice({
   name: "todo",
@@ -18,8 +17,14 @@ const todoSlice = createSlice({
     emptyAll(state) {
       state.splice(0, state.length);
     },
+    toggleFavorite(state, action) {
+      const todo = state.find((todo) => todo.id === action.payload.id);
+      if (todo) {
+        todo.favorite = !todo.favorite;
+      }
+    }, 
   },
 });
 
-export const { addTodo, toggleTodo, emptyAll } = todoSlice.actions;
+export const { addTodo, toggleTodo, emptyAll, toggleFavorite } = todoSlice.actions;
 export default todoSlice.reducer;
