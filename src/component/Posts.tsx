@@ -1,10 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllPosts } from "../store/postSlice";
+import { RootState } from "../store/rootReducer";
 
 function Posts() {
   const dispatch = useDispatch();
-  const { posts, loading, error } = useSelector((state) => state);
+  const { posts, loading, error } = useSelector(
+    (state: RootState) => state.posts
+  );
   useEffect(() => {
     dispatch(fetchAllPosts());
   }, [dispatch]);
