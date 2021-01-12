@@ -2,8 +2,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Todo from "./Todo";
 
+export interface TodoProps {
+  id: number;
+  userId: number;
+  title: string;
+  completed: boolean;
+}
+
 function Todos() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<TodoProps[]>([]);
 
   // Hook for side affects
   useEffect(() => {

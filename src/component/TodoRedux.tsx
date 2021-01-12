@@ -1,19 +1,26 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { addTodo, toggleTodo } from '../store/todo'
-import { addTodo, toggleTodo, emptyAll, toggleFavorite } from "../store/todoSlice";
+import { RootState } from "../store/rootReducer";
+import {
+  addTodo,
+  toggleTodo,
+  emptyAll,
+  toggleFavorite,
+  TodoSliceProps,
+} from "../store/todoSlice";
 
 function TodoRedux() {
   const [todoText, setTodoText] = useState("");
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos);
+  // hover mouse over the RootState to see
+  const todos = useSelector((state: RootState) => state.todos);
 
-  const handleTextChange = (e) => {
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoText((prev) => (prev = e.target.value));
   };
 
   const handleAddTodo = () => {
-    const payload = {
+    const payload: TodoSliceProps = {
       id: Math.random(),
       todo: todoText,
       completed: false,
@@ -24,15 +31,15 @@ function TodoRedux() {
     setTodoText((prev) => (prev = ""));
   };
 
-  const handleFavorites = (todo) => {
+  const handleFavorites = (todo: TodoSliceProps) => {
     dispatch(toggleFavorite(todo));
-  }
+  };
 
   const handleEmptyAll = () => {
     dispatch(emptyAll());
   };
 
-  const handleToggle = (todo) => {
+  const handleToggle = (todo: TodoSliceProps) => {
     // dispatch the toggleTodo action with a payload
     dispatch(toggleTodo(todo));
   };
@@ -47,15 +54,13 @@ function TodoRedux() {
       <button onClick={handleAddTodo}>Add Todo</button>
       <button onClick={handleEmptyAll}>Empty All</button>
       {todos.map((todo) => (
-        <div>
-        <div
-          key={todo.id}
-          onClick={() => handleToggle(todo)}
-          style={{ textDecoration: todo.completed ? "line-through" : "none" }}
-        >
-          {todo.todo}
-          
-        </div>
+        <div key={todo.id}>
+          <div
+            onClick={() => handleToggle(todo)}
+            style={{ textDecoration: todo.completed ? "line-through" : "none" }}
+          >
+            {todo.todo}
+          </div>
           <div onClick={() => handleFavorites(todo)}>
             {todo.favorite === true ? "⭐️" : "★"}
           </div>

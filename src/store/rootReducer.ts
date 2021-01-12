@@ -7,4 +7,5 @@ const rootReducer = combineReducers({
   posts: postSlice,
 });
 
+export type RootState = ReturnType<typeof rootReducer>;
 export default rootReducer;

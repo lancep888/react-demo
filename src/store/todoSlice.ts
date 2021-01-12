@@ -1,9 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export interface TodoSliceProps {
+  id: number;
+  todo: string;
+  completed: boolean;
+  favorite: boolean;
+}
 
 const todoSlice = createSlice({
   name: "todo",
-  initialState: [],
+  initialState: [] as TodoSliceProps[],
   reducers: {
     addTodo(state, action) {
       state.push(action.payload);
@@ -22,9 +28,14 @@ const todoSlice = createSlice({
       if (todo) {
         todo.favorite = !todo.favorite;
       }
-    }, 
+    },
   },
 });
 
-export const { addTodo, toggleTodo, emptyAll, toggleFavorite } = todoSlice.actions;
+export const {
+  addTodo,
+  toggleTodo,
+  emptyAll,
+  toggleFavorite,
+} = todoSlice.actions;
 export default todoSlice.reducer;

@@ -19,15 +19,7 @@ function App() {
 
   return (
     <>
-      {/* <div>{counter}</div>
-      <Button onClick={addCounter} style={{ color: "red" }}>
-        Plus
-      </Button>
-      <Button onClick={minusCounter} style={{ color: "blue" }}>
-        Minus
-      </Button> */}
       <TodoRedux />
-      {/* <Posts /> */}
     </>
   );
 }
