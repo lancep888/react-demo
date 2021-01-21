@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllPosts } from "../store/postSlice";
+// import { fetchAllPosts } from "../store/postSlice";
 import { RootState } from "../store/rootReducer";
+import { ADD_POST_SAGA } from "../saga/postSagaActions";
 
 function Posts() {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ function Posts() {
     (state: RootState) => state.posts
   );
   useEffect(() => {
-    dispatch(fetchAllPosts());
+    dispatch({ type: ADD_POST_SAGA });
   }, [dispatch]);
 
   let content;
